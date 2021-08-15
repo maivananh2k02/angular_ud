@@ -1,0 +1,65 @@
+<app-header ></app-header>
+<main>
+  <section class="container">
+    <ul class="products">
+      <li class="row" *ngFor="let product of products">
+        <div class="col left">
+          <div class="thumbnail">
+            <a href="#">
+              <img src="{{product.image}}" alt="" style="width: 150px;height: 150px"/>
+            </a>
+          </div>
+          <div class="detail">
+            <div class="name"><a href="#">{{product.name}}</a></div>
+            <div class="description">
+              {{product.desc}}
+            </div>
+            <div class="price">{{product.price}}</div>
+          </div>
+        </div>
+
+        <div class="col right">
+          <div class="quantity">
+            <input #inputQtyElement type="number" min="1" class="quantity" step="1" value="{{product.qty}}" (input)="updateQty(inputQtyElement,product.id)"/>
+          </div>
+
+          <div class="remove">
+            <svg
+              class="close"
+              x="0px"
+              y="0px"
+              viewBox="0 0 60 60"
+              xml:space="preserve"
+              (click)="delete(product.id)"
+            >
+                  <polygon
+                    points="38.936,23.561 36.814,21.439 30.562,27.691 24.311,21.439 22.189,23.561 28.441,29.812 22.189,36.064 24.311,38.186 30.562,31.934 36.814,38.186 38.936,36.064 32.684,29.812"
+                  ></polygon>
+                </svg>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="container">
+<!--    <div class="promotion">-->
+<!--      <label for="promo-code">Have A Promo Code?</label>-->
+<!--      <input type="text" id="promo-code"/>-->
+<!--      <button type="button"></button>-->
+<!--    </div>-->
+
+    <div class="summary">
+      <ul>
+        <li>Subtotal <span>$21.97</span></li>
+        <li>Tax <span>$5.00</span></li>
+        <li class="total">Total <span>{{total()}}</span></li>
+      </ul>
+    </div>
+
+    <div class="checkout">
+      <button type="button">Check Out</button>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>
